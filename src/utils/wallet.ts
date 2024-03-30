@@ -23,22 +23,19 @@ class SolanaAccount {
   }
 }
 
-export const getSolanaAccountFromMnemonicPaths = (
-  mnemonic: string,
-  password: string,
-  ids: number[]
-): Account[] => {
-  // const mnemonic =
-  //   'neither lonely flavor argue grass remind eye tag avocado spot unusual intact'
-  const seed = mnemonicToSeedSync(mnemonic, password) // (mnemonic, password)
-  const accounts = ids.map((i) => {
-    const path = `m/44'/501'/${i}'/0'`
-    const keypair = SolanaKeypair.fromSeed(
-      derivePath(path, seed.toString('hex')).key
-    )
-    console.log(`${path} => ${keypair.secretKey}`)
-    console.log(`${path} => ${keypair.publicKey.toBase58()}`)
-    return new SolanaAccount(keypair)
-  })
-  return accounts
+export const getSolanaPath = (idx: number) => `m/44'/501'/${idx}'/0'`
+
+export const getSeed = (mnemonic: string, password: string) => {
+  return mnemonicToSeedSync(mnemonic, password)
+}
+
+export const getSolanaAccountFromSeedPaths = (
+  seed: Buffer,
+  idx: number
+): Account => {
+  const path = getSolanaPath(idx)
+  const keypair = SolanaKeypair.fromSeed(
+    derivePath(path, seed.toString('hex')).key
+  )
+  return new SolanaAccount(keypair)
 }

@@ -1,6 +1,7 @@
 import WalletManager from '@/components/WalletManager'
 import Image from 'next/image'
 import Link from 'next/link'
+import GithubIcon from '@/assets/github.svg'
 
 export default function Home() {
   return (
@@ -14,7 +15,7 @@ export default function Home() {
           href="https://github.com/warm-mechine-book/wallet-manager"
           target="_blank"
         >
-          <Image alt="github" width={24} height={24} src="/github.svg" />
+          <Image alt="github" width={24} height={24} src={GithubIcon} />
         </Link>
       </footer>
     </main>
