@@ -5,7 +5,7 @@ import {
 } from '@solana/web3.js'
 import { derivePath } from 'ed25519-hd-key'
 import { Account } from '@/types/wallet'
-import { bytesToHex } from '@/utils/etc'
+// import { bytesToHex } from '@/utils/etc'
 import bs58 from 'bs58'
 
 class SolanaAccount {
