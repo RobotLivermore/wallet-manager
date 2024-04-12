@@ -3,28 +3,9 @@
 // AccountDisplay.tsx is a component that displays the account information
 
 import React, { useState } from 'react'
-import {
-  getSolanaAccountFromSeedPaths,
-  getSolanaPath,
-} from '@/utils/wallet'
+import { getSolanaAccountFromSeedPaths, getSolanaPath } from '@/utils/wallet'
 import DetailModal from './DetailModal'
-
-const ChevronLeft: React.FC<{ className: string }> = ({ className }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    strokeWidth={3}
-    stroke="currentColor"
-    className={className}
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M15.75 19.5 8.25 12l7.5-7.5"
-    />
-  </svg>
-)
+import { ChevronLeft, ChevronRight } from './Icons'
 
 interface AccountDisplayProps {
   seed: Buffer | null
@@ -36,14 +17,14 @@ export default function AccountDisplay({ seed }: AccountDisplayProps) {
   return (
     <>
       {/* tab */}
-      <div className="flex space-x-3 mb-4">
+      {/* <div className="flex space-x-3 mb-4">
         <button className="px-2 border-2 border-black rounded-sm">
           solana
         </button>
         <button className="px-2 border-2 border-black rounded-sm">
           ethereum
         </button>
-      </div>
+      </div> */}
       {seed && (
         <table className="w-full">
           <thead className="text-left">
@@ -63,7 +44,10 @@ export default function AccountDisplay({ seed }: AccountDisplayProps) {
                   <td>{account.Address()}</td>
                   <td className="flex items-center justify-end">
                     {/* {summarizeString(account.SecretKey())} */}
-                    <DetailModal />
+                    <DetailModal
+                      address={account.Address()}
+                      secretKey={account.SecretKey()}
+                    />
                   </td>
                 </tr>
               )
@@ -92,23 +76,28 @@ export default function AccountDisplay({ seed }: AccountDisplayProps) {
               setPage(page + 1)
             }}
           >
-            <ChevronLeft className="w-6 h-6 rotate-180" />
+            <ChevronRight className="w-6 h-6" />
           </button>
           <input
-            className="ml-4 border-2 border-black rounded w-24 h-9 px-2 text-center outline-none focus:border-black focus:border-3"
+            className="ml-4 border-2 border-black rounded w-24 h-9 px-2 flex justify-center items-center py-2 text-center outline-none focus:border-black focus:border-3"
             type="number"
-            placeholder='page'
+            placeholder="page"
             value={inputPage}
             onChange={(e) => {
               setInputPage(e.target.value)
             }}
           />
-          <button className="ml-4 font-bold" onClick={() => {
-            if (inputPage) {
-              setPage(parseInt(inputPage))
-              setInputPage('')
-            }
-          }}>Go</button>
+          <button
+            className="ml-4 font-bold"
+            onClick={() => {
+              if (inputPage) {
+                setPage(parseInt(inputPage))
+                setInputPage('')
+              }
+            }}
+          >
+            Go
+          </button>
         </div>
       )}
     </>

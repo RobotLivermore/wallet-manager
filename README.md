@@ -1,36 +1,14 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a solana wallet manager, inspired by https://iancoleman.io/bip39/.
 
-## Getting Started
+这是一个solana的钱包管理器，源于https://iancoleman.io/bip39/。
 
-First, run the development server:
+![alt text](static/image.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## How to use
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+If you don't have a mnemonic phrase, click "generate" to create a new one. However, for security reasons, it's best not to use a standalone mnemonic; instead, combine it with a passphrase. After entering the passphrase, click "GO" to generate the encrypted account. Click "detail" to view the account's private key. Next time, when you input the same mnemonic and passphrase, you'll see the same account. When copying the account's private key, remember to split it into segments and copy them in a shuffled order to prevent malicious programs from monitoring your clipboard.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 如何使用
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+如果你没有助记词，点击generate可以生成一个新的助记词。但为了安全起见，最好不要使用单独的助记词，请配合密码短语使用。当你输入密码短语后，点击GO，就会出现加密后的账号。点击detail可以看到账号的私钥。下次当你输入同样的助记词和同样的密码短语，就能看到同样的账号。复制账号私钥的时候，请切记分几段打乱顺序复制，以防止有恶意程序监听您的剪切板。
